@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Company About Us"
+version = "1.0.0"
+id = "artifacts/about-us"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22257
+
+[services.development]
+run = "pnpm --filter @workspace/about-us run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/about-us", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/about-us/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22257"
+BASE_PATH = "/"

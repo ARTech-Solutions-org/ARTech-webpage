@@ -1,0 +1,89 @@
+# Replit Build Prompt — Company "About Us" Page with Employee Profile Cards
+
+Copy everything below and paste it into Replit's AI/Agent prompt box.
+
+---
+
+Build a modern, dark-themed "About Us" web page for our company using React + Tailwind CSS (or plain HTML/CSS/JS if React isn't available). The design must closely follow a specific premium "creative agency resume" aesthetic described in full detail below. Follow every spec precisely — colors, typography, layout, spacing, and micro-interactions all matter.
+
+## 1. OVERALL VISUAL STYLE
+
+- Dark theme throughout. Background is a moody charcoal/graphite gradient, roughly from `#2b2b2b` (top-left) to `#1a1a1a` (bottom-right), with a subtle soft spotlight/vignette effect (a lighter radial glow near the bottom center, like a photography studio floor light).
+- Accent color: neon/lime green `#B6FF3C` (approx). Use it for highlights, numbers/stats, section labels, small icons, and hover states — never as a large background fill, only as accents.
+- Primary text color: white / off-white `#F2F2F2` for headings.
+- Secondary text color: light gray `#A0A0A0` for body copy and captions.
+- Typography: bold, heavy, condensed sans-serif for headings (similar to "Poppins Black" / "Montserrat ExtraBold" / "Archivo Black"). Body text uses a clean geometric sans-serif (e.g. "Inter" or "Poppins Regular").
+- Large "ghost" background typography: an oversized, very bold, low-opacity (around 8–12% opacity, slightly darker/lighter than background) text element sitting behind content — e.g. the company name or page title rendered huge in the background, cropped by the viewport edges, for texture/depth.
+- Card components: dark rounded-corner rectangles (`border-radius: 16–20px`), background slightly lighter than page background (`#232323` or a subtle dark gradient), with a faint 1px border (`rgba(255,255,255,0.05)`) and soft drop shadow for depth. Cards should feel like "glass panels" floating on the background.
+- Small hand-drawn style doodle accents in neon green (like a squiggly arrow, a curved arrow, a checkmark) placed near key elements — these give a playful, human touch. Use simple SVG stroke paths, not images.
+- Rounded square icon badges (dark background, white icon) for contact info (email, phone, location).
+
+## 2. PAGE STRUCTURE — "ABOUT US" (top section)
+
+Full-width hero/intro section at the top of the page (not employee-specific), containing:
+
+1. Giant ghost-style background heading: the COMPANY NAME in huge bold letters, low opacity, behind everything.
+2. A smaller, bold, solid heading above the fold: something like "WHO WE ARE" or the company tagline, in white, neon-green accent word inside it.
+3. A "Company DNA" card (dark card, rounded corners) containing:
+   - 2–3 bold stat lines in neon green (e.g. "XX+ Clients.", "XX+ Years.", "One creative team.") — numbers in green, rest of line in white/gray.
+   - A short paragraph (gray text) describing the company's mission, values, and what makes it different.
+4. Optional secondary card: "Mega Clients" — logo grid of client/partner logos in a dark card, grayscale/white icons.
+5. Contact / social info block: rounded square icon badges + text for email, phone, location, and links (website, LinkedIn, Behance, Instagram, etc.), positioned bottom-left of the hero section.
+6. A right-side column (like a sidebar) listing "Our Expertise" / "Core Skills" as a simple stacked list, right-aligned, gray text, uppercase, small font — mirroring a skills list layout.
+
+This whole hero section should visually match the reference design 1:1 in terms of color palette, spacing, corner radius, font weight, and the "ghost text + neon accents + dark cards" combination.
+
+## 3. TEAM SECTION — Employee Grid
+
+Below the hero/about section, add a "Meet The Team" (or "Our Team") heading (same bold style, neon-green accent word), followed by a responsive grid of employee cards:
+
+- Grid: 4 columns on desktop, 2 on tablet, 1 on mobile.
+- Each small card = dark rounded rectangle, containing:
+  - Employee photo (cropped, centered, cutout-on-dark-background style if possible)
+  - Employee name (bold white)
+  - Job title (small, neon green, uppercase)
+  - Card size: compact, roughly 250–300px tall.
+- **Hover animation** on each card (desktop):
+  - Smooth transform: card lifts slightly (`translateY(-8px)`) and scales up slightly (`scale(1.03)`), transition `0.3s ease`.
+  - A soft neon-green glow shadow appears around the card border on hover (`box-shadow: 0 0 25px rgba(182,255,60,0.25)`).
+  - The employee photo can have a subtle zoom-in effect (`scale(1.08)`) inside its container (use `overflow:hidden`).
+  - Job title color brightens / underline animates in from left to right in neon green.
+- **Click behavior**: clicking a card opens a full-screen modal / overlay (with a smooth fade + scale-in transition, dark semi-transparent backdrop with blur `backdrop-filter: blur(6px)`) that displays that employee's **full personal profile page**, styled EXACTLY like the reference resume design (see Section 4). Include a close (X) button top-right of the modal, and clicking outside the modal or pressing ESC closes it.
+
+## 4. EMPLOYEE FULL PROFILE LAYOUT (shown inside the modal on click)
+
+Recreate this exact layout/style (this is the core visual template — replicate closely):
+
+- **Top-left**: Employee's full name in giant, bold, ghost-style background typography (two lines, first + last name stacked), low opacity, behind other content.
+- Below the name: job title in a smaller pill/label style, uppercase, letter-spaced, gray/white.
+- **Center**: a large cutout photo of the employee (transparent/dark background, full body or 3/4 shot), positioned center-right, slightly overlapping the cards around it.
+- Around the photo: a circular curved text path (SVG `textPath`) repeating the job title, in small gray uppercase letters, forming a semi-circle to the right of the photo. Plus a small neon-green hand-drawn squiggly arrow pointing at the photo.
+- **Top-right area**: "Education" block — bold white heading "EDUCATION" + gray paragraph text with degree/university info.
+- **Right sidebar** (below education): "Skills" list — bold green heading "SKILLS", followed by a plain stacked list of skill keywords in small gray uppercase text, right-aligned.
+- **Left column, stacked dark cards**:
+  1. A card titled (e.g.) "MY STORY" or "PROFILE DNA" — with 2–3 bold neon-green stat lines (e.g. "X+ Years", "X+ Projects") followed by a short gray bio paragraph.
+  2. A "Portfolio" card — small dark square icon (e.g. Behance/LinkedIn logo) + "Click my world." text + link, with a neon-green hand-drawn arrow pointing at it.
+  3. A "Highlights" or "Clients Worked With" card — grid of small grayscale logos.
+- **Bottom-right, large dark card**: "Career Journey" / "Experience Timeline" — a vertical list of roles:
+  - Each entry: Job title (bold white or green if current role), Company name — Location (white/bold), Date range + employment type (small gray text).
+  - Most recent role at top, styled slightly larger/highlighted in neon green if it's their current position.
+- **Bottom-left**: contact info block — rounded square icon badges (email, phone, location) same style as the hero section.
+- All corner radii, spacing, font weights, and the dark-card-on-dark-background layering must match the hero section's design system exactly, so the whole site feels like one consistent design language.
+
+## 5. DATA STRUCTURE
+
+Set up the employee data as a JSON array/config so it's easy to add more employees later. Each employee object should include fields for: `name`, `title`, `photoUrl`, `bioStats` (array of stat strings), `bioText`, `education`, `skills` (array), `portfolioLink`, `clients` (array of logo URLs), `experience` (array of {role, company, location, dates, current: bool}), `email`, `phone`, `location`.
+
+Render both the small grid card and the full modal profile dynamically from this data — do not hardcode each employee's HTML separately.
+
+## 6. TECH / INTERACTION NOTES
+
+- Use CSS transitions/animations for all hover and modal effects (no jarring instant changes).
+- Make sure the modal is scrollable on smaller screens if content overflows.
+- Fully responsive: hero section, team grid, and profile modal should all adapt gracefully to mobile (stack columns vertically, reduce ghost-text size, etc.).
+- Use semantic HTML and accessible markup (alt text for images, keyboard-accessible modal close).
+- Keep the color palette, font weights, and spacing 100% consistent between the About Us hero section and every employee's profile modal — they must look like they belong to the exact same design system.
+
+---
+
+**Goal**: A polished, agency-style "About Us" page where the top section introduces the company (same color/typography system as the reference), followed by a grid of employee cards that animate smoothly on hover, and open into a rich, personalized full-profile view (matching the reference resume image's layout precisely) when clicked.
