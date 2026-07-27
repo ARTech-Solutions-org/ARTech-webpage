@@ -70,10 +70,12 @@ function Home() {
   const lastScrollY = useRef(0);
   const currentMultiplier = useRef(1);
   const isInitialized = useRef(false);
+  const scrollAccum = useRef(0);
 
   useEffect(() => {
     const initTimer = setTimeout(() => {
-      const center = document.body.scrollHeight / 2;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const center = maxScroll / 2;
       window.scrollTo(0, center);
       lastScrollY.current = center;
       isInitialized.current = true;
@@ -85,16 +87,20 @@ function Home() {
     if (!isInitialized.current) return;
 
     const scrollY = window.scrollY;
-    const deltaY = Math.abs(scrollY - lastScrollY.current);
+    const rawDelta = scrollY - lastScrollY.current;
+    const deltaY = Math.abs(rawDelta);
 
-    // Snap back to center so infinite scroll works
+    // Accumulate scroll delta virtually — never force scrollTo mid-frame
     const maxScroll = document.body.scrollHeight - window.innerHeight;
-    if (scrollY <= 50 || scrollY >= maxScroll - 50) {
-      window.scrollTo(0, maxScroll / 2);
-      lastScrollY.current = maxScroll / 2;
-      return;
-    }
+    scrollAccum.current += rawDelta;
     lastScrollY.current = scrollY;
+
+    // Silently re-center when near the edge (user won't notice the jump because position is virtual)
+    if (scrollY <= 100 || scrollY >= maxScroll - 100) {
+      const center = maxScroll / 2;
+      window.scrollTo({ top: center, behavior: 'instant' });
+      lastScrollY.current = center;
+    }
 
     // Scroll velocity → speed multiplier
     const velocity = delta > 0 ? deltaY / delta : 0;
@@ -133,14 +139,10 @@ function Home() {
         opacity = Math.max(0, (1 - p.z) / 0.35);
       }
 
-      // Subtle blur when very small (far away), sharp as it approaches
-      const blurPx = p.z < 0.15 ? Math.max(0, (0.15 - p.z) / 0.15) * 6 : 0;
-
       const wrapper = imgRefs.current[i];
       if (wrapper) {
         wrapper.style.transform = `translate(-50%, -50%) translate3d(${xPos}px, ${yPos}px, 0) scale(${scale}) rotate(${p.rot}deg)`;
         wrapper.style.opacity = opacity.toFixed(3);
-        wrapper.style.filter = blurPx > 0 ? `blur(${blurPx.toFixed(1)}px)` : 'none';
       }
     });
   });
