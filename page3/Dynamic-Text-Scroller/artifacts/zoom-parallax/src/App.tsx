@@ -53,40 +53,42 @@ function Home() {
 
   const imgRefs = useRef<(HTMLDivElement | null)[]>([]);
   const imgElRefs = useRef<(HTMLImageElement | null)[]>([]);
-  const lastScrollY = useRef(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const currentMultiplier = useRef(1);
   const isInitialized = useRef(false);
   const scrollAccum = useRef(0);
 
   useEffect(() => {
     const initTimer = setTimeout(() => {
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const center = maxScroll / 2;
-      window.scrollTo(0, center);
-      lastScrollY.current = center;
+      if (scrollContainerRef.current) {
+        const el = scrollContainerRef.current;
+        const maxScroll = el.scrollHeight - el.clientHeight;
+        el.scrollTop = maxScroll / 2;
+      }
       isInitialized.current = true;
     }, 80);
     return () => clearTimeout(initTimer);
   }, []);
 
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const maxScroll = el.scrollHeight - el.clientHeight;
+    const center = maxScroll / 2;
+    const rawDelta = el.scrollTop - center;
+    
+    if (rawDelta !== 0) {
+      scrollAccum.current += rawDelta;
+      el.scrollTop = center; // Synchronous snap inside the event handler
+    }
+  };
+
   useAnimationFrame((_time, delta) => {
     if (!isInitialized.current) return;
 
-    const scrollY = window.scrollY;
-    const rawDelta = scrollY - lastScrollY.current;
+    // Consume accumulated scroll
+    const rawDelta = scrollAccum.current;
+    scrollAccum.current = 0;
     const deltaY = Math.abs(rawDelta);
-
-    // Accumulate scroll delta virtually — never force scrollTo mid-frame
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    scrollAccum.current += rawDelta;
-    lastScrollY.current = scrollY;
-
-    // Silently re-center when near the edge (user won't notice the jump because position is virtual)
-    if (scrollY <= 100 || scrollY >= maxScroll - 100) {
-      const center = maxScroll / 2;
-      window.scrollTo({ top: center, behavior: 'instant' });
-      lastScrollY.current = center;
-    }
 
     // Scroll velocity → speed multiplier
     const velocity = delta > 0 ? deltaY / delta : 0;
@@ -134,9 +136,25 @@ function Home() {
   });
 
   return (
-    <div style={{ backgroundColor: '#000', minHeight: '100dvh' }}>
-      {/* Scroll surface */}
-      <div style={{ height: '5000vh', width: '100%', backgroundColor: '#000' }} />
+    <div style={{ backgroundColor: '#000', height: '100dvh', overflow: 'hidden' }}>
+      <style>{`.hide-scroll::-webkit-scrollbar { display: none; }`}</style>
+      
+      {/* Scroll container that overlays everything but is transparent */}
+      <div 
+        className="hide-scroll"
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          overflowY: 'scroll',
+          zIndex: 9999,
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+        }}
+      >
+        <div style={{ height: '5000vh' }} />
+      </div>
 
       {/* Preload images silently */}
       <div style={{ display: 'none' }}>
