@@ -6,26 +6,12 @@ import { Route, Switch, Router as WouterRouter } from 'wouter';
 const queryClient = new QueryClient();
 
 const URLS = [
-  'https://picsum.photos/id/10/700/700',
-  'https://picsum.photos/id/20/700/700',
-  'https://picsum.photos/id/30/700/700',
-  'https://picsum.photos/id/40/700/700',
-  'https://picsum.photos/id/50/700/700',
-  'https://picsum.photos/id/60/700/700',
-  'https://picsum.photos/id/70/700/700',
-  'https://picsum.photos/id/80/700/700',
-  'https://picsum.photos/id/90/700/700',
-  'https://picsum.photos/id/100/700/700',
-  'https://picsum.photos/id/110/700/700',
-  'https://picsum.photos/id/120/700/700',
-  'https://picsum.photos/id/130/700/700',
-  'https://picsum.photos/id/140/700/700',
-  'https://picsum.photos/id/150/700/700',
-  'https://picsum.photos/id/160/700/700',
-  'https://picsum.photos/id/170/700/700',
-  'https://picsum.photos/id/180/700/700',
-  'https://picsum.photos/id/190/700/700',
-  'https://picsum.photos/id/200/700/700',
+  '/Coca-Cola-Logo.wine.png',
+  "/Domino's_Pizza-Logo.wine.png",
+  "/Kellogg's-Logo.wine.png",
+  '/Lamborghini-Logo.wine.png',
+  '/Red_Bull-Logo.wine.png',
+  '/TikTok-Icon-Logo.wine.png',
 ];
 const NUM_IMAGES = 16;
 
