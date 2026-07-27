@@ -57,6 +57,7 @@ function Home() {
   const currentMultiplier = useRef(1);
   const isInitialized = useRef(false);
   const scrollAccum = useRef(0);
+  const lastScrollTop = useRef(0);
 
   useEffect(() => {
     const initTimer = setTimeout(() => {
@@ -64,6 +65,7 @@ function Home() {
         const el = scrollContainerRef.current;
         const maxScroll = el.scrollHeight - el.clientHeight;
         el.scrollTop = maxScroll / 2;
+        lastScrollTop.current = maxScroll / 2;
       }
       isInitialized.current = true;
     }, 80);
@@ -72,13 +74,19 @@ function Home() {
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const el = e.currentTarget;
-    const maxScroll = el.scrollHeight - el.clientHeight;
-    const center = maxScroll / 2;
-    const rawDelta = el.scrollTop - center;
+    const currentScroll = el.scrollTop;
+    const rawDelta = currentScroll - lastScrollTop.current;
     
     if (rawDelta !== 0) {
       scrollAccum.current += rawDelta;
-      el.scrollTop = center; // Synchronous snap inside the event handler
+      lastScrollTop.current = currentScroll;
+
+      const maxScroll = el.scrollHeight - el.clientHeight;
+      // Only snap back when nearing the edges to avoid breaking scroll momentum and causing lag
+      if (currentScroll < 1000 || currentScroll > maxScroll - 1000) {
+        el.scrollTop = maxScroll / 2;
+        lastScrollTop.current = maxScroll / 2;
+      }
     }
   };
 
