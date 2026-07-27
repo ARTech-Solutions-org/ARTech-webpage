@@ -73,7 +73,7 @@ const journeyRoles = [
 ];
 
 const earlierRoles = [
-  { title: "B.Sc. Artificial Intelligence", period: "Nile University · Sep 2022 – Jul 2026" },
+  { title: "B.Sc. Artificial Intelligence", period: "Nile University · Graduated Jul 2026" },
   { title: "Dean's Honor Award (3x)", period: "Spring 2024 · Spring 2025 · Fall 2025" },
 ];
 
@@ -95,15 +95,15 @@ export function ResumePortrait() {
       {/* Inner: canvas fills at least full viewport height; taller when content demands it */}
       <main
         className="[font-family:'Inter',Helvetica]"
-        style={{ position: "relative", width: "100vw", height: "max(180vw, 100vh)", overflow: "hidden" }}
+        style={{ position: "relative", width: "100vw", height: "max(230vw, 100vh)", overflow: "hidden" }}
       >
 
         {/* ── Spinning Text Ring: FULL-STACK ENGINEER (Behind Character) ── */}
         <div
           className="absolute pointer-events-none"
           style={{
-            left: "50%",
-            top: v(610),
+            left: "46%",
+            top: v(420),
             transform: "translateX(-50%)",
             width: v(580),
             height: v(580),
@@ -138,11 +138,11 @@ export function ResumePortrait() {
           aria-label="Mohanned Mahmoud Portrait"
           className="absolute m-0 overflow-hidden"
           style={{
-            left: "50%",
+            left: "47%",
             transform: "translateX(-50%)",
-            top: v(550),
-            width: v(1600),
-            height: v(1800),
+            top: v(330),
+            width: v(1300),
+            height: v(1500),
             pointerEvents: "none",
             zIndex: 1,
             opacity: 1,
@@ -194,7 +194,7 @@ export function ResumePortrait() {
           width="119" height="119" viewBox="0 0 119 119" fill="none"
           className="absolute m-0"
           style={{
-            left: v(740), top: v(520), width: v(190), height: v(190), zIndex: 2,
+            left: v(740), top: v(350), width: v(190), height: v(190), zIndex: 2,
             transform: "rotate(70deg)",
             filter: "drop-shadow(0 0 25px rgba(56,189,248,0.85)) drop-shadow(0 10px 20px rgba(0,0,0,0.7))",
           }}
@@ -207,63 +207,21 @@ export function ResumePortrait() {
         {/* ── Name ───────────────────────────────────────────────────────── */}
         <h1
           className="absolute font-black text-[#6b6b6b] leading-[0.9] m-0 p-0"
-          style={{ left: v(40), top: v(65), fontSize: v(140), letterSpacing: v(2), zIndex: 2 }}
+          style={{ left: v(40), top: v(65), fontSize: v(120), letterSpacing: v(2), zIndex: 2 }}
         >
           <span className="block">MOHANNED</span>
           <span className="block">MAHMOUD</span>
         </h1>
 
-        {/* ── Senior Art Director ────────────────────────────────────────── */}
+        {/* ── Title ──────────────────────────────────────────────────────── */}
         <p
           className="absolute font-bold text-white leading-[normal] m-0 whitespace-nowrap"
-          style={{ left: v(45), top: v(450), fontSize: v(24), letterSpacing: v(3), zIndex: 2 }}
+          style={{ left: v(45), top: v(320), fontSize: v(22), letterSpacing: v(3), zIndex: 2 }}
         >
           AI ENGINEER & RESEARCHER
         </p>
 
-        {/* ── Education ──────────────────────────────────────────────────── */}
-        <section
-          aria-labelledby="edu-m"
-          className="absolute"
-          style={{ left: v(755), top: v(380), width: v(340), zIndex: 2 }}
-        >
-          <h2
-            id="edu-m"
-            className="font-bold text-white leading-[normal] m-0 whitespace-nowrap"
-            style={{ fontSize: v(27) }}
-          >
-            EDUCATION
-          </h2>
-          <p
-            className="font-normal text-[#cccccc] m-0"
-            style={{ fontSize: v(17), lineHeight: 1.35, marginTop: v(9) }}
-          >
-            B.Sc. Artificial Intelligence, Nile University (Dean's Honor ×3)
-          </p>
-        </section>
-
-        {/* ── Skills Column (right-aligned) ──────────────────────────────── */}
-        <section
-          aria-labelledby="skills-m"
-          className="absolute text-right"
-          style={{ left: v(875), top: v(570), width: v(280), zIndex: 2 }}
-        >
-          <h2
-            id="skills-m"
-            className="font-bold text-[#38bdf8] leading-[normal] m-0"
-            style={{ fontSize: v(22) }}
-          >
-            SKILLS
-          </h2>
-          <ul
-            className="list-none p-0 m-0 font-normal text-[#cccccc]"
-            style={{ fontSize: v(15), lineHeight: 1.65, marginTop: v(8) }}
-          >
-            {skills.map((s) => <li key={s}>{s}</li>)}
-          </ul>
-        </section>
-
-        {/* ── Creative DNA Card ──────────────────────────────────────────── */}
+        {/* ── About Card (Left Side) ─────────────────────────────────────── */}
         <div
           className="absolute rounded-[1.167vw] overflow-hidden"
           style={{
@@ -278,26 +236,30 @@ export function ResumePortrait() {
             boxShadow: "0 12px 40px 0 rgba(0,0,0,0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.15)",
           }}
         >
-          <h2 className="font-bold text-white leading-[normal] m-0" style={{ fontSize: v(25) }}>
-            ENGINEERING DNA
+          <h2 className="font-bold text-white leading-[normal] m-0" style={{ fontSize: v(28) }}>
+            <span className="text-[#38bdf8]">ABOUT</span> ME
           </h2>
-          <p className="font-bold text-[#d9d9d9] m-0" style={{ fontSize: v(18), lineHeight: 1.5 }}>
-            <span className="text-[#38bdf8]">3x</span> Dean's Honor.<br />
-            <span className="text-[#38bdf8]">IEEE</span> Published.<br />
-            <span className="text-[#38bdf8]">#1</span> MediLearn VR/AI.
+          <p className="font-normal text-[#cccccc] m-0" style={{ fontSize: v(16.5), lineHeight: 1.6 }}>
+            AI Engineering graduate from Nile University with deep expertise spanning
+            Machine Learning, Deep Learning, NLP, Computer Vision, Data Engineering,
+            and Full-Stack Development. Recognized three times with the Dean's Honor Award
+            for academic excellence, and published IEEE-indexed research on urban mobility
+            presented at NetMob 2025 in Paris.
           </p>
-          <p className="font-normal text-[#bfbfbf] m-0" style={{ fontSize: v(16), lineHeight: 1.45 }}>
-            AI Engineering student at Nile University with expertise in ML/DL, NLP,
-            Computer Vision, Data Engineering, and Full-Stack Development.
-            Built award-winning VR/AI platforms and published IEEE urban mobility research.
+          <p className="font-normal text-[#cccccc] m-0" style={{ fontSize: v(16.5), lineHeight: 1.6 }}>
+            Built and led the development of MediLearn — an award-winning VR/AI medical
+            training platform — and contributed to cutting-edge projects in computer vision,
+            large language model fine-tuning, and real-time data pipelines. Currently working
+            as a Full-Stack Engineer at ARTech, bringing AI-driven ideas to production-grade
+            web experiences.
           </p>
         </div>
 
-        {/* ── Portfolio Card ─────────────────────────────────────────────── */}
+        {/* ── Portfolio Card (Left Side) ─────────────────────────────────── */}
         <div
           className="absolute rounded-[1.167vw] overflow-hidden flex items-center"
           style={{
-            left: v(40), top: v(940),
+            left: v(40), top: v(1180), width: v(420),
             background: "rgba(18, 18, 22, 0.45)",
             backdropFilter: "blur(20px) saturate(180%)",
             WebkitBackdropFilter: "blur(20px) saturate(180%)",
@@ -315,119 +277,93 @@ export function ResumePortrait() {
             AI
           </div>
           <div className="flex flex-col items-start" style={{ gap: v(4) }}>
-            <h2 className="font-bold text-white leading-[normal] whitespace-nowrap m-0" style={{ fontSize: v(21) }}>
+            <h2 className="font-bold text-white leading-[normal] whitespace-nowrap m-0" style={{ fontSize: v(20) }}>
               PORTFOLIO & LINKS
             </h2>
-            <p className="font-normal text-[#bfbfbf] leading-[normal] whitespace-nowrap m-0" style={{ fontSize: v(15) }}>
+            <p className="font-normal text-[#bfbfbf] leading-[normal] whitespace-nowrap m-0" style={{ fontSize: v(16) }}>
               GitHub & Research papers.
             </p>
-            <a
-              href="mailto:m.mahmoud2203@nu.edu.eg"
-              target="_blank" rel="noopener noreferrer"
-              className="font-normal text-[#999999] underline leading-[normal] whitespace-nowrap"
-              style={{ fontSize: v(13.5) }}
-            >
-              m.mahmoud2203@nu.edu.eg
-            </a>
           </div>
         </div>
 
-        {/* ── Key Projects Card ──────────────────────────────────────────── */}
+        {/* ── Education (Right Side) ─────────────────────────────────────── */}
+        <section
+          aria-labelledby="edu-m"
+          className="absolute text-right"
+          style={{ left: v(600), top: v(260), width: v(400), zIndex: 2 }}
+        >
+          <h2
+            id="edu-m"
+            className="font-bold text-white leading-[normal] m-0 whitespace-nowrap text-right"
+            style={{ fontSize: v(28) }}
+          >
+            EDUCATION
+          </h2>
+          <p
+            className="font-normal text-[#cccccc] m-0 text-right"
+            style={{ fontSize: v(18), lineHeight: 1.35, marginTop: v(9) }}
+          >
+            B.Sc. Artificial Intelligence, Nile University (Dean's Honor ×3)
+          </p>
+        </section>
+
+        {/* ── Skills Column (Right Side, Right Aligned) ──────────────────── */}
+        <section
+          aria-labelledby="skills-m"
+          className="absolute text-right"
+          style={{ left: v(600), top: v(790), width: v(400), zIndex: 2 }}
+        >
+          <h2
+            id="skills-m"
+            className="font-bold text-[#38bdf8] leading-[normal] m-0 text-right"
+            style={{ fontSize: v(24) }}
+          >
+            SKILLS
+          </h2>
+          <ul
+            className="list-none p-0 m-0 font-normal text-[#cccccc] text-right"
+            style={{ fontSize: v(16), lineHeight: 1.65, marginTop: v(8) }}
+          >
+            {skills.map((s) => <li key={s}>{s}</li>)}
+          </ul>
+        </section>
+
+        {/* ── Contact Card (Right Side) ──────────────────────────────────── */}
         <div
           className="absolute rounded-[1.167vw] overflow-hidden"
           style={{
-            left: v(40), top: v(1100), width: v(420),
+            left: v(600), top: v(1250), width: v(400),
             background: "rgba(18, 18, 22, 0.45)",
             backdropFilter: "blur(20px) saturate(180%)",
             WebkitBackdropFilter: "blur(20px) saturate(180%)",
             border: "1px solid rgba(255, 255, 255, 0.12)",
             paddingLeft: v(28), paddingRight: v(28), paddingTop: v(26), paddingBottom: v(26),
-            display: "flex", flexDirection: "column", gap: v(18),
-            zIndex: 2,
-            boxShadow: "0 12px 40px 0 rgba(0,0,0,0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.15)",
-          }}
-        >
-          <h2 className="font-bold m-0" style={{ fontSize: v(23) }}>
-            <span className="text-[#38bdf8]">KEY</span>
-            <span className="text-white"> PROJECTS</span>
-          </h2>
-          <ul className="list-none p-0 m-0 font-semibold text-[#cccccc]" style={{ fontSize: v(15), lineHeight: 1.6 }}>
-            {keyProjects.map((proj) => <li key={proj}>{proj}</li>)}
-          </ul>
-        </div>
-
-        {/* ── Creative Journey Card ──────────────────────────────────────── */}
-        <div
-          className="absolute rounded-[1.167vw] overflow-hidden"
-          style={{
-            left: v(657), top: v(1040), width: v(500),
-            background: "rgba(18, 18, 22, 0.45)",
-            backdropFilter: "blur(20px) saturate(180%)",
-            WebkitBackdropFilter: "blur(20px) saturate(180%)",
-            border: "1px solid rgba(255, 255, 255, 0.12)",
-            paddingLeft: v(34), paddingRight: v(34), paddingTop: v(30), paddingBottom: v(30),
             display: "flex", flexDirection: "column", gap: v(14),
             zIndex: 2,
             boxShadow: "0 12px 40px 0 rgba(0,0,0,0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.15)",
           }}
         >
-          <h2 className="font-bold text-white leading-[normal] m-0" style={{ fontSize: v(26) }}>
-            EXPERIENCE & LEADERSHIP
+          <h2 className="font-bold m-0" style={{ fontSize: v(23) }}>
+            <span className="text-[#38bdf8]">GET IN</span>
+            <span className="text-white"> TOUCH</span>
           </h2>
-
-          {journeyRoles.map((role) => (
-            <article
-              key={`${role.title}-${role.company}`}
-              className="flex flex-col"
-              style={{ gap: v(3) }}
-            >
-              <h3
-                className={`font-bold leading-[normal] m-0 ${role.featured ? "text-[#38bdf8]" : "text-white"}`}
-                style={{ fontSize: v(16) }}
-              >
-                {role.title}
-              </h3>
-              <p className="font-medium text-[#ebebeb] leading-[normal] m-0" style={{ fontSize: v(15.5) }}>
-                {role.company}
-              </p>
-              <p className="font-normal text-[#999999] leading-[normal] m-0" style={{ fontSize: v(13) }}>
-                {role.period}
-              </p>
-            </article>
-          ))}
-
-          {earlierRoles.map((role) => (
-            <article key={role.title} className="flex items-center" style={{ gap: v(9) }}>
-              <span
-                className="shrink-0 bg-[#38bdf8]"
-                style={{ width: v(8), height: v(8), borderRadius: v(3), flexShrink: 0 }}
-                aria-hidden="true"
-              />
-              <div className="flex flex-col" style={{ gap: v(2) }}>
-                <h3 className="font-bold text-white leading-[normal] m-0 whitespace-nowrap" style={{ fontSize: v(15) }}>
-                  {role.title}
-                </h3>
-                <p className="font-normal text-[#999999] leading-[normal] m-0 whitespace-nowrap" style={{ fontSize: v(12.5) }}>
-                  {role.period}
-                </p>
+          <div className="flex flex-col gap-2">
+            {[
+              { label: "Email", value: "m.mahmoud2203@nu.edu.eg" },
+              { label: "Phone", value: "+20 102 256 6232" },
+              { label: "Location", value: "Cairo, Egypt" },
+            ].map((item) => (
+              <div key={item.label} className="flex flex-col">
+                <span className="font-bold uppercase tracking-widest text-[#38bdf8]" style={{ fontSize: v(11) }}>
+                  {item.label}
+                </span>
+                <span className="font-normal text-[#cccccc]" style={{ fontSize: v(14) }}>
+                  {item.value}
+                </span>
               </div>
-            </article>
-          ))}
+            ))}
+          </div>
         </div>
-
-        {/* ── Contact Info — pinned near canvas bottom ────────────────────── */}
-        <address
-          className="absolute not-italic font-normal text-[#d9d9d9]"
-          style={{ left: v(45), bottom: v(36), fontSize: v(20), zIndex: 2 }}
-        >
-          <a href="mailto:m.mahmoud2203@nu.edu.eg" className="block text-[#d9d9d9] no-underline hover:text-white transition-colors">
-            m.mahmoud2203@nu.edu.eg
-          </a>
-          <a href="tel:+201022566232" className="block text-[#d9d9d9] no-underline hover:text-white transition-colors" style={{ marginTop: v(10) }}>
-            +20 102 256 6232
-          </a>
-          <span className="block" style={{ marginTop: v(10) }}>Cairo, Egypt</span>
-        </address>
 
       </main>
     </div>

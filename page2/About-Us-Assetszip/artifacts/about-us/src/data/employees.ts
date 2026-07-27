@@ -39,8 +39,8 @@ export const employees: Employee[] = [
       "IEEE Published.",
       "#1 MediLearn VR/AI."
     ],
-    bioText: "AI Engineering student at Nile University with expertise in ML/DL, NLP, Computer Vision, Data Engineering, and Full-Stack Development. Built award-winning VR/AI platforms and published IEEE urban mobility research.",
-    education: "B.Sc. Artificial Intelligence, Nile University (Dean's Honor ×3).",
+    bioText: "AI Engineering graduate from Nile University with expertise in ML/DL, NLP, Computer Vision, Data Engineering, and Full-Stack Development. Built award-winning VR/AI platforms and published IEEE urban mobility research.",
+    education: "B.Sc. Artificial Intelligence, Nile University (Graduated Jul 2026 · Dean's Honor ×3).",
     skills: [
       "Python · C++",
       "PyTorch · TensorFlow",

@@ -9,11 +9,7 @@ interface TeamCardProps {
 
 export function TeamCard({ employee, onClick }: TeamCardProps) {
   const handleClick = () => {
-    if (employee.portfolioLink && employee.portfolioLink.startsWith('/')) {
-      window.location.href = employee.portfolioLink;
-    } else {
-      onClick(employee);
-    }
+    onClick(employee);
   };
 
   return (
